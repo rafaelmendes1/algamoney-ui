@@ -43,6 +43,10 @@
               <td>{{lanc.dataVencimento}}</td>
               <td>{{lanc.dataPagamento}}</td>
               <td [ngStyle]="{ color: lanc.tipo === 'DESPESA' ? 'red' : 'blue'}">{{lanc.valor}}</td>
+              <td class="col-acoes">
+                <a pButton type="button" icon="pi pi-pencil" class="p-mr-2"></a>  
+                <button pButton type="button" icon="pi pi-trash"></button>
+              </td>
           </tr>
       </ng-template>
       </p-table>
