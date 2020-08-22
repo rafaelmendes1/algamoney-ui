@@ -40,9 +40,9 @@
             <tr>  
                 <td>{{lanc.pessoa}}</td>
                 <td>{{lanc.descricao}}</td>
-                <td>{{lanc.dataVencimento}}</td>
-                <td>{{lanc.dataPagamento}}</td>
-                <td [ngStyle]="{ color: lanc.tipo === 'DESPESA' ? 'red' : 'blue'}">{{lanc.valor}}</td>
+                <td>{{lanc.dataVencimento | date:'dd/MM/y'}}</td>
+                <td>{{lanc.dataPagamento | date:'dd/MM/y'}}</td>
+                <td [ngStyle]="{ color: lanc.tipo === 'DESPESA' ? 'red' : 'blue'}">{{lanc.valor | number}}</td>
                 <td class="col-acoes">
                   <a pButton type="button" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>  
                   <button pButton type="button" icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
