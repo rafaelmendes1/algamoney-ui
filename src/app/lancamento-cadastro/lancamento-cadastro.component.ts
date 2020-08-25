@@ -12,4 +12,8 @@ export class LancamentoCadastroComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  tipos = [
+    { label: 'Receita', value: '0' },
+    { label: 'Despesa', value: '1' },
+  ]
 }
