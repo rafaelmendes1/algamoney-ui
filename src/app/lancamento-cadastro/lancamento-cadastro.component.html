@@ -20,24 +20,11 @@
             </div>
 
             <div class="p-col-12 p-md-9 p-fluid">
-                <label>Descrição {{ descricao.errors | json }}</label>
+                <label>Descrição</label>
                 <input pInputText type="text" ngModel name="descricao" #descricao="ngModel" required minlength="5">
                 
-                <p-messages severity="error" *ngIf="descricao.hasError('required') && descricao.dirty">
-                    <ng-template pTemplate>
-                        <div>
-                            Informe uma descrição
-                        </div>
-                    </ng-template>
-                </p-messages>
-                
-                <p-messages severity="error" *ngIf="descricao.hasError('minlength') && descricao.dirty">
-                    <ng-template pTemplate>
-                        <div>
-                            Mínimo de {{ descricao.errors.minlength.requiredLength }} caracteres
-                        </div>
-                    </ng-template>
-                </p-messages>
+                <app-message [control]="descricao" error="required" text="Informe uma descrição"></app-message>
+                <app-message [control]="descricao" error="minlength" text="Mínimo de {{ descricao.errors.minlength?.requiredLength }} caracteres"></app-message>
             </div>
 
             <div class="p-col-12 p-md-3 p-fluid">
