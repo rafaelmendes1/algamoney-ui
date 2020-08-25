@@ -15,7 +15,7 @@
             </div>
 
             <div class="p-col-6 p-md-3 p-fluid">
-                <label>{{ tipo.value === '0' ? 'Recebimento' : 'Pagamento' }}</label>
+                <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
                 <p-calendar dateFormat="dd/mm/yy"></p-calendar>
             </div>
 
@@ -31,12 +31,12 @@
 
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Categoria</label>
-                <input pInputText type="text">
+                <p-dropdown [options]="categorias" placeholder="Selecione"></p-dropdown>
             </div>
 
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Pessoa</label>
-                <input pInputText type="text">
+                <p-dropdown [options]="pessoas" placeholder="Selecione" [filter]="true"></p-dropdown>
             </div>
 
             <div class="p-col-12 p-fluid">
