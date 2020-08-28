@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module'
+
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -11,9 +13,6 @@ import { CalendarModule } from 'primeng/calendar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { MessagesModule } from 'primeng/messages';
-import { MessageModule } from 'primeng/message';
-
 
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component'
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component'
@@ -27,6 +26,7 @@ import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.co
   ],
   imports: [
     CommonModule,
+    SharedModule,
     FormsModule,
 
     InputTextModule,
@@ -38,8 +38,6 @@ import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.co
     SelectButtonModule,
     DropdownModule,
     InputNumberModule,
-    MessagesModule,
-    MessageModule
 
   ],
   exports: [
