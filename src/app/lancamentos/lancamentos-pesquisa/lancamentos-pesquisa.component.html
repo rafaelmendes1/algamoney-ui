@@ -1,6 +1,6 @@
 <div class="container">
-  <form autocomplete="off" (ngSubmit)="pesquisar()">
-    <div class="p-grid">
+  <div class="p-grid">
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
       <div class="p-col-12">
         <h1>Lançamentos</h1>
       </div>
@@ -12,21 +12,20 @@
 
       <div class="p-col-12">
         <label style="display: block;">Vencimento</label>
-        <input pInputText type="text" style="width: 95px;">
-
+        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }" name="vencimentoInicio" [(ngModel)]="dataVencimentoInicio"></p-calendar>
         <label> até </label>
-        <input pInputText type="text" style="width: 95px;">
+        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }" name="vencimentoFim" [(ngModel)]="dataVencimentoFim"></p-calendar>
       </div>
 
       <div class="p-col-12">
         <button pButton type="submit" label="Pesquisar"></button>
       </div>
       
-    </div>
-  </form>
+    </form>
+  </div>
     <div class="p-grid">
       <div class="p-col-12">
-        <p-table [value]="lancamentos" [paginator]="true" [rows]="3" [responsive]="true">
+        <p-table [value]="lancamentos" [paginator]="true" [rows]="6" [responsive]="true" emptyMessage="Nenhum lançamento encontrado">
 
           <ng-template pTemplate="header">
               <tr>
