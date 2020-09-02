@@ -3,10 +3,12 @@ import { Http, Headers, URLSearchParams } from '@angular/http';
 
 import * as moment from 'moment'
 
-export interface LancamentoFiltro {
+export class LancamentoFiltro {
   descricao: string;
   dataVencimentoInicio: Date;
   dataVencimentoFim: Date;
+  pagina = 0; 
+  itensPorPagina = 5;
 }
 
 @Injectable({
@@ -23,6 +25,9 @@ export class LancamentoService {
     const params = new URLSearchParams;
     headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
+    params.set('page', filtro.pagina.toString());
+    params.set('size', filtro.itensPorPagina.toString());
+
     if (filtro.descricao) {
       params.set('descricao', filtro.descricao);
     }
@@ -37,7 +42,16 @@ export class LancamentoService {
 
     return this.http.get(`${this.lancamentosUrl}?resumo`, { headers, search: params })
     .toPromise()
-    .then(response => 
-      response.json().content);
+    .then(response => {
+      const responseJson = response.json();
+      const lancamentos = responseJson.content;
+
+      const resultado = {
+        lancamentos,
+        total: responseJson.totalElements
+      };
+      
+      return resultado;
+    });
   }
 }
