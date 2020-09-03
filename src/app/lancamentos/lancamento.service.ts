@@ -43,14 +43,14 @@ export class LancamentoService {
     return this.http.get(`${this.lancamentosUrl}?resumo`, { headers, search: params })
     .toPromise()
     .then(response => {
-      const responseJson = response.json();
+      const responseJson = response.json(); 
       const lancamentos = responseJson.content;
 
       const resultado = {
-        lancamentos,
+        lancamentos: lancamentos,
         total: responseJson.totalElements
       };
-      
+
       return resultado;
     });
   }
