@@ -16,7 +16,7 @@ export class PessoaService {
   
   pessoasUrl = 'http://localhost:8080/pessoas';
 
-  pesquisar(filtro: PessoasFiltro){
+  pesquisar(filtro: PessoasFiltro): Promise<any> {
     const headers = new Headers();
     const params = new URLSearchParams;
 

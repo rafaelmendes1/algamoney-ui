@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="p-grid">
-    <form autocomplete="off" (ngSubmit)="pesquisar()">
+  <form autocomplete="off" (ngSubmit)="pesquisar()">
+    <div class="p-grid">  
       <div class="p-col-12">
         <h1>Lançamentos</h1>
       </div>
@@ -21,12 +21,12 @@
         <button pButton type="submit" label="Pesquisar"></button>
       </div>
       
-    </form>
-  </div>
+    </div>
+  </form> 
     <div class="p-grid">
       <div class="p-col-12">
         <p-table [value]="lancamentos" [responsive]="true" emptyMessage="Nenhum lançamento encontrado" [paginator]="true" [rows]="filtro.itensPorPagina" 
-          [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)">
+          [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)" #tabela>
 
           <ng-template pTemplate="header">
               <tr>
@@ -47,7 +47,7 @@
                   <td [ngStyle]="{ color: lanc.tipo === 'DESPESA' ? 'red' : 'blue'}">{{lanc.valor | number}}</td>
                   <td class="p-d-flex">
                   <a pButton type="button" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" class="p-mr-2"></a>  
-                  <button pButton type="button" icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+                  <button pButton type="button" icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="excluir(lanc)"></button>
                   </td>
               </tr>
           </ng-template>
