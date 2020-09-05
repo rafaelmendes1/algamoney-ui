@@ -11,7 +11,8 @@ import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { CoreModule } from './core/core.module';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api'
-
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -26,10 +27,15 @@ import { MessageService } from 'primeng/api'
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
     
   ],
-  providers: [LancamentoService, MessageService],
+  providers: [
+    LancamentoService, 
+    MessageService,
+    ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
