@@ -1,17 +1,36 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './navbar/navbar.component';
 
+import { MessageService } from 'primeng/api'
+import { ConfirmationService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
+import { NavbarComponent } from './navbar/navbar.component';
+import { PessoaService } from '../pessoas/pessoa.service'
+import { LancamentoService } from '../lancamentos/lancamento.service'
+import { ErrorHandlerService } from './error-handler.service'
 
 @NgModule({
   declarations: [
     NavbarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, 
+    ToastModule,
+    ConfirmDialogModule
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    ToastModule,
+    ConfirmDialogModule
+  ],
+  providers: [
+    LancamentoService,
+    PessoaService,
+    MessageService,
+    ConfirmationService,
+    ErrorHandlerService
   ]
 })
 export class CoreModule { }

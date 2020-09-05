@@ -1,11 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LancamentoService, LancamentoFiltro } from '../lancamento.service';
 import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/api'
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+
 @Component({
   selector: 'app-lancamentos-pesquisa',
   templateUrl: './lancamentos-pesquisa.component.html',
   styleUrls: ['./lancamentos-pesquisa.component.css']
 })
+
 export class LancamentosPesquisaComponent implements OnInit {
 
   totalRegistros = 0;
@@ -14,6 +17,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   @ViewChild('tabela') grid;
 
   constructor(private lancamentoService: LancamentoService,
+    private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService) { }
 
@@ -26,7 +30,8 @@ export class LancamentosPesquisaComponent implements OnInit {
     .then(resultado => {
       this.totalRegistros = resultado.total;
       this.lancamentos = resultado.lancamentos;
-    });
+    })
+    .catch(erro => this.errorHandler.handle(erro));
   }
   
   aoMudarPagina(event: LazyLoadEvent) {
@@ -48,8 +53,9 @@ export class LancamentosPesquisaComponent implements OnInit {
     .then(() => {
       this.grid.first = 0;
       this.pesquisar();
-      this.messageService.add({key: 'aoExcluir', severity: 'success', summary: 'Lançamento excluído com sucesso!'});
-    });
+      this.messageService.add({key: 'aviso', severity: 'success', summary: 'Lançamento excluído com sucesso!'});
+    })
+    .catch(erro => this.errorHandler.handle(erro));
   }
 
 }
