@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { LancamentoService } from './lancamentos/lancamento.service'
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { CoreModule } from './core/core.module';
+import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api'
 
 
@@ -24,7 +25,8 @@ import { MessageService } from 'primeng/api'
     PessoasModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    ToastModule
     
   ],
   providers: [LancamentoService, MessageService],
