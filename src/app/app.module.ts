@@ -1,19 +1,20 @@
-import { LancamentosModule } from './lancamentos/lancamentos.module';
-import { PessoasModule } from './pessoas/pessoas.module';
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { PessoasModule } from './pessoas/pessoas.module';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
-import { LancamentoService } from './lancamentos/lancamento.service'
 import { AppComponent } from './app.component';
+import { LancamentoService } from './lancamentos/lancamento.service'
+import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { CoreModule } from './core/core.module';
+import { MessageService } from 'primeng/api'
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,7 @@ import { CoreModule } from './core/core.module';
     HttpModule
     
   ],
-  providers: [LancamentoService],
+  providers: [LancamentoService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
