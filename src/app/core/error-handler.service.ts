@@ -11,7 +11,7 @@ export class ErrorHandlerService {
   handle(errorResponse: any) {
     let msg: string;
 
-    if (errorResponse.status === 400) {
+    if (errorResponse.status > 400 || errorResponse.status <= 499) {
       msg= JSON.parse(errorResponse._body)[0].mensagemUsuario;
     }else {
       console.error(errorResponse);
