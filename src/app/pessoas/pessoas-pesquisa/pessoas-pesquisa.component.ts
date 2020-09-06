@@ -38,23 +38,24 @@ export class PessoasPesquisaComponent implements OnInit {
     this.pesquisar(pagina);
   }
 
-  confirmarExclusao(lancamento: any) {
+  confirmarExclusao(pessoa: any) {
     this.confirmacaoService.confirm({
       message: 'Tem certeza que deseja excluir?',
       accept: () => {
-        this.excluir(lancamento);
+        this.excluir(pessoa);
       }
     });
     
   }
 
-  excluir(lancamento: any) {
-    this.pessoaService.excluir(lancamento.id)
+  excluir(pessoa: any) {
+    this.pessoaService.excluir(pessoa.id)
     .then(() => {
       this.grid.first = 0;
       this.pesquisar();
-      this.messageService.add({key: 'aviso', severity: 'success', summary: 'Pessoaa excluída com sucesso!'});
+      this.messageService.add({key: 'aviso', severity: 'success', summary: 'Pessoa excluída com sucesso!'});
     })
     .catch(error => this.errorHandler.handle(error));
   }
+
 }

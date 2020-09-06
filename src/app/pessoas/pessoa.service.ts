@@ -44,7 +44,7 @@ export class PessoaService {
     });
   }
 
-  excluir(id: number): Promise<any> {
+  excluir(id: number): Promise<void> {
     const headers = new Headers();
 
     headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
@@ -52,5 +52,14 @@ export class PessoaService {
     return this.http.delete(`${this.pessoasUrl}/${id}`, { headers })
     .toPromise()
     .then(response => null)
+  }
+
+  mudarStatus(id: number, ativo: boolean): Promise<void> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(`${this.pessoasUrl}/${id}/ativo`, !ativo, { headers })
+    .toPromise()
+    .then(response => null);
   }
 }
