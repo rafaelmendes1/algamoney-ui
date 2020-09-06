@@ -33,7 +33,7 @@
                 <td>{{pessoa.nome}}</td>
                 <td>{{pessoa.endereco.cidade}}</td>
                 <td>{{pessoa.endereco.estado}}</td>
-                <td>{{pessoa.ativo}}</td>
+                <td><a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top" (click)="mudarStatus(pessoa)">{{ pessoa.ativo ? 'Ativo' : 'Inativo' }}</a></td>
                 <td class="p-d-flex">
                   <a pButton type="button" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" class="p-mr-2"></a>  
                   <button pButton type="button" icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(pessoa)"></button>
