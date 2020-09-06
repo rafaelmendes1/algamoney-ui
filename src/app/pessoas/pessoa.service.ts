@@ -43,4 +43,14 @@ export class PessoaService {
       return resultado;
     });
   }
+
+  excluir(id: number): Promise<any> {
+    const headers = new Headers();
+
+    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.delete(`${this.pessoasUrl}/${id}`, { headers })
+    .toPromise()
+    .then(response => null)
+  }
 }
