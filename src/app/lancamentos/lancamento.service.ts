@@ -55,15 +55,6 @@ export class LancamentoService {
     });
   }
 
-  listarTodas(): Promise<any> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-
-    return this.http.get(this.lancamentosUrl, { headers })
-    .toPromise()
-    .then(respose => respose.json().content);
-  }
-
   excluir(id: number): Promise<void> {
     const headers = new Headers();
     headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
