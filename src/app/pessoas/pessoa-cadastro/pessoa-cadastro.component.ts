@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Pessoa } from 'src/app/core/model';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -12,4 +14,9 @@ export class PessoaCadastroComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  pessoa = new Pessoa();
+
+  salvar(form: FormControl) {
+    console.log(this.pessoa)
+  }
 }
