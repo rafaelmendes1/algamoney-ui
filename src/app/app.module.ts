@@ -7,7 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { CoreModule } from './core/core.module';
+import { Routes, RouterModule } from '@angular/router';
+import { LancamentosPesquisaComponent } from './lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component';
+import { LancamentoCadastroComponent } from './lancamentos/lancamento-cadastro/lancamento-cadastro.component';
+import { PessoasPesquisaComponent } from './pessoas/pessoas-pesquisa/pessoas-pesquisa.component';
 
+const routes: Routes = [
+  { path: 'lancamentos', component: LancamentosPesquisaComponent },
+  { path: 'lancamentos/novo', component: LancamentoCadastroComponent },
+  { path: 'pessoas', component: PessoasPesquisaComponent }
+]
 
 @NgModule({
   declarations: [
@@ -17,14 +26,16 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
+    RouterModule.forRoot(routes),
+
     CoreModule,
     LancamentosModule,
     PessoasModule,
-    AppRoutingModule,
+    AppRoutingModule
     
   ],
   providers: [
-
+    
   ],
   bootstrap: [AppComponent]
 })
