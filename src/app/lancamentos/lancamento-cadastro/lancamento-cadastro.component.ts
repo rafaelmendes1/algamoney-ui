@@ -4,6 +4,7 @@ import { PessoaService } from '../../pessoas/pessoa.service'
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Lancamento } from '../../core/model';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -14,9 +15,11 @@ export class LancamentoCadastroComponent implements OnInit {
 
   constructor(private categoriaService: CategoriaService,
     private pessoasService: PessoaService,
-    private erroHandler: ErrorHandlerService) { }
+    private erroHandler: ErrorHandlerService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    console.log(this.route.snapshot.params['id']);
     this.carregarCategorias();
     this.carregarPessoas();
   }
