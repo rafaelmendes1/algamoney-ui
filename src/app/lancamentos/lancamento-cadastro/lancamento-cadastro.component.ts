@@ -5,6 +5,7 @@ import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Lancamento } from '../../core/model';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { LancamentoService } from '../lancamento.service';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -13,29 +14,46 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LancamentoCadastroComponent implements OnInit {
 
-  constructor(private categoriaService: CategoriaService,
-    private pessoasService: PessoaService,
-    private erroHandler: ErrorHandlerService,
-    private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    console.log(this.route.snapshot.params['id']);
-    this.carregarCategorias();
-    this.carregarPessoas();
-  }
+  categorias = []
+  pessoas = []
+  lancamento = new Lancamento;
 
   tipos = [
     { label: 'Receita', value: 'RECEITA' },
     { label: 'Despesa', value: 'DESPESA' },
   ]
 
-  categorias = []
-  pessoas = []
-  lancamento = new Lancamento;
+  constructor(private lancamentoService: LancamentoService,
+    private categoriaService: CategoriaService,
+    private pessoasService: PessoaService,
+    private erroHandler: ErrorHandlerService,
+    private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    const idLancamento = this.route.snapshot.params['id'];
+
+    if(idLancamento) {
+      this.carregarLancamento(idLancamento);
+    }
+    this.carregarCategorias();
+    this.carregarPessoas();
+  }
+
+  get editando() {
+    return Boolean(this.lancamento.id);
+  }
 
   salvar(form: FormControl) {
     console.log(this.lancamento);
   }
+
+  carregarLancamento(id: number) {
+    this.lancamentoService.buscarPeloId(id)
+    .then(lancamento => {
+      this.lancamento = lancamento;
+    })
+    .catch(erro => this.erroHandler.handle(erro));
+  } 
 
   carregarCategorias() {
     return this.categoriaService.listarTodas()
