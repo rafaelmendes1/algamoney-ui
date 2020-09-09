@@ -85,7 +85,7 @@ export class LancamentoService {
 
     return this.http.get(`${this.lancamentosUrl}/${id}`, { headers })
     .toPromise()
-    .then(() => {
+    .then(response => {
       const lancamento = response.json() as Lancamento;
       this.converterStringsParaDatas([lancamento]);
 
