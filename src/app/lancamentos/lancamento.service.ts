@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
 
 import * as moment from 'moment'
+import { Lancamento } from '../core/model';
 
 export class LancamentoFiltro {
   descricao: string;
@@ -64,4 +65,41 @@ export class LancamentoService {
     .then(() => null);
   }
 
+  atualizar(lancamento: Lancamento): Promise<Lancamento> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.put(`${this.lancamentosUrl}/${lancamento.id}`, JSON.stringify(lancamento), { headers })
+    .toPromise()
+    .then(response => {
+      const lancamento = response.json() as Lancamento;
+      this.converterStringsParaDatas([lancamento]);
+
+      return lancamento;
+    });
+  }
+
+  buscarPeloId(id: number): Promise<Lancamento> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return this.http.get(`${this.lancamentosUrl}/${id}`, { headers })
+    .toPromise()
+    .then(() => {
+      const lancamento = response.json() as Lancamento;
+      this.converterStringsParaDatas([lancamento]);
+
+      return lancamento;
+    });
+  }
+
+  private converterStringsParaDatas(lancamentos: Lancamento[]) {
+    for(const lancamento of lancamentos) {
+      lancamento.dataVencimento = moment(lancamento.dataVencimento, 'YYYY-MM-DD').toDate();
+
+      if(lancamento.dataPagamento) {
+        lancamento.dataPagamento = moment(lancamento.dataPagamento,  'YYYY-MM-DD').toDate();
+      }
+    }
+  }
 }
