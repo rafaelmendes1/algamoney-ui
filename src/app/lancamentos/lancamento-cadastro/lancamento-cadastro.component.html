@@ -11,13 +11,13 @@
 
             <div class="p-col-6 p-md-3 p-fluid">
                 <label>Vencimento</label>
-                <p-calendar dateFormat="dd/mm/yy" name="caleVenci" [(ngModel)]="lancamento.dataVencimento" ngModel [readonlyInput]="false" [inline]="false" [readonlyInput]="false" [showIcon]="false" #dataVencimento="ngModel" required></p-calendar>
+                <p-calendar dateFormat="dd/mm/yy"  name="caleVenci" [(ngModel)]="lancamento.dataVencimento" ngModel [readonlyInput]="false" #dataVencimento="ngModel" required></p-calendar>
                 <app-message [control]="dataVencimento" error="required" text="Informe uma data de vencimento"></app-message>
             </div>
 
             <div class="p-col-6 p-md-3 p-fluid">
                 <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
-                <p-calendar dateFormat="dd/mm/yy" name="calePag" [(ngModel)]="lancamento.dataPagamento"></p-calendar>
+                <p-calendar dateFormat="dd/mm/yy"  name="calePag" [readonlyInput]="false" [(ngModel)]="lancamento.dataPagamento"></p-calendar>
             </div>
 
             <div class="p-col-12 p-md-9 p-fluid">
@@ -30,17 +30,17 @@
 
             <div class="p-col-12 p-md-3 p-fluid">
                 <label>Valor</label>
-                <p-inputNumber placeholder="0,00" locale="pt-br" name="val" [minFractionDigits]="2" [(ngModel)]="lancamento.valor" ngModel #valor="ngModel"></p-inputNumber>
+                <p-inputNumber placeholder="0,00" locale="pt-br" name="val" [minFractionDigits]="2" [(ngModel)]="lancamento.valor" ngModel #valor="ngModel" required></p-inputNumber>
             </div>
 
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Categoria</label>
-                <p-dropdown [options]="categorias" placeholder="Selecione" name="categ" [(ngModel)]="lancamento.categoria" ngModel #categoria="ngModel" required></p-dropdown>
+                <p-dropdown [options]="categorias" placeholder="Selecione" name="categ" [(ngModel)]="lancamento.categoria.id" ngModel #categoria="ngModel" required></p-dropdown>
             </div>
 
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Pessoa</label>
-                <p-dropdown [options]="pessoas" placeholder="Selecione" name="pes" [filter]="true" [(ngModel)]="lancamento.pessoa" ngModel #pessoa="ngModel" required></p-dropdown>
+                <p-dropdown [options]="pessoas" placeholder="Selecione" name="pes" [filter]="true" [(ngModel)]="lancamento.pessoa.id" ngModel #pessoa="ngModel" required></p-dropdown>
             </div>
 
             <div class="p-col-12 p-fluid">

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
 import { CategoriaService } from '../../categorias/categoria.service';
 import { PessoaService } from '../../pessoas/pessoa.service'
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
-import { Lancamento } from '../../core/model';
-import { FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { LancamentoService } from '../lancamento.service';
+import { Lancamento } from '../../core/model';
+import { MessageService } from 'primeng/api';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -27,9 +29,11 @@ export class LancamentoCadastroComponent implements OnInit {
     private categoriaService: CategoriaService,
     private pessoasService: PessoaService,
     private erroHandler: ErrorHandlerService,
+    private messageService: MessageService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
     const idLancamento = this.route.snapshot.params['id'];
 
     if(idLancamento) {
@@ -44,7 +48,11 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   salvar(form: FormControl) {
-    console.log(this.lancamento);
+    this.lancamentoService.adicionar(this.lancamento)
+    .then(lancamentoAdicionado => {
+      this.messageService.add({key: 'aviso', severity: 'success', summary: 'Lançamento adicionado com sucesso!'});
+    })
+    .catch(erro => this.erroHandler.handle(erro));
   }
 
   carregarLancamento(id: number) {

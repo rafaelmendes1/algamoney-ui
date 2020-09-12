@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
-
-import * as moment from 'moment'
 import { Lancamento } from '../core/model';
+import * as moment from 'moment'
+
 
 export class LancamentoFiltro {
   descricao: string;
@@ -34,11 +34,15 @@ export class LancamentoService {
     }
     
     if (filtro.dataVencimentoInicio) {
-      params.set('dataVencimentoDe',  moment(filtro.dataVencimentoInicio).format("YYYY-MM-DD"));
+      console.log(filtro.dataVencimentoInicio)
+      params.set('dataVencimentoDe',  moment(filtro.dataVencimentoInicio).format('YYYY-MM-DD'));
+      console.log(filtro.dataVencimentoInicio)
     }
 
     if (filtro.dataVencimentoFim) {
-      params.set('dataVencimentoAte', moment(filtro.dataVencimentoFim).format("YYYY-MM-DD"));
+      console.log(filtro.dataVencimentoFim)
+      params.set('dataVencimentoAte', moment(filtro.dataVencimentoFim).format('YYYY-MM-DD'));
+      console.log(filtro.dataVencimentoFim)
     }
 
     return this.http.get(`${this.lancamentosUrl}?resumo`, { headers, search: params })
@@ -54,6 +58,19 @@ export class LancamentoService {
 
       return resultado;
     });
+  }
+
+  adicionar(lancamento: Lancamento): Promise<Lancamento> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    headers.append('Content-Type', 'application/json');    
+
+    console.log(lancamento.dataVencimento);
+    console.log(JSON.stringify(lancamento.dataVencimento));
+    console.log(lancamento);
+    return this.http.post(this.lancamentosUrl, JSON.stringify(lancamento), { headers })
+    .toPromise()
+    .then(response => response.json());
   }
 
   excluir(id: number): Promise<void> {
@@ -102,4 +119,5 @@ export class LancamentoService {
       }
     }
   }
+
 }
