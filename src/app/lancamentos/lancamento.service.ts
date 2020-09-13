@@ -65,12 +65,25 @@ export class LancamentoService {
     headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
     headers.append('Content-Type', 'application/json');    
 
-    console.log(lancamento.dataVencimento);
-    console.log(JSON.stringify(lancamento.dataVencimento));
     console.log(lancamento);
     return this.http.post(this.lancamentosUrl, JSON.stringify(lancamento), { headers })
     .toPromise()
     .then(response => response.json());
+  }
+
+  atualizar(lancamento: Lancamento): Promise<Lancamento> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    headers.append('Content-Type', 'application/json');
+    
+    return this.http.put(`${this.lancamentosUrl}/${lancamento.id}`, JSON.stringify(lancamento), { headers })
+    .toPromise()
+    .then(response => {
+      const lancamento = response.json() as Lancamento;
+      this.converterStringsParaDatas([lancamento]);
+
+      return lancamento;
+    });
   }
 
   excluir(id: number): Promise<void> {
@@ -80,20 +93,6 @@ export class LancamentoService {
     return this.http.delete(`${this.lancamentosUrl}/${id}`, { headers })
     .toPromise()
     .then(() => null);
-  }
-
-  atualizar(lancamento: Lancamento): Promise<Lancamento> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-
-    return this.http.put(`${this.lancamentosUrl}/${lancamento.id}`, JSON.stringify(lancamento), { headers })
-    .toPromise()
-    .then(response => {
-      const lancamento = response.json() as Lancamento;
-      this.converterStringsParaDatas([lancamento]);
-
-      return lancamento;
-    });
   }
 
   buscarPeloId(id: number): Promise<Lancamento> {
