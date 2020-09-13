@@ -39,9 +39,6 @@ import { RouterModule } from '@angular/router';
     InputNumberModule
 
   ],
-  exports: [
-    LancamentoCadastroComponent,
-    LancamentosPesquisaComponent
-  ]
+  exports: []
 })
 export class LancamentosModule { }
