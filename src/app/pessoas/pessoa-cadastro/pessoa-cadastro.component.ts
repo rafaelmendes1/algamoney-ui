@@ -75,7 +75,7 @@ export class PessoaCadastroComponent implements OnInit {
       this.pessoa = new Pessoa();
     }.bind(this), 1);
 
-    this.router.navigate(['/lancamentos/novo']);
+    this.router.navigate(['/pessoas/novo']);
   }
 
 }
