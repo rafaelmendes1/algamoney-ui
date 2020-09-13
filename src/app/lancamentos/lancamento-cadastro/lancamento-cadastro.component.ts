@@ -19,7 +19,7 @@ export class LancamentoCadastroComponent implements OnInit {
 
   categorias = []
   pessoas = []
-  lancamento = new Lancamento;
+  lancamento = new Lancamento();
 
   tipos = [
     { label: 'Receita', value: 'RECEITA' },

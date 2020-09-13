@@ -8,7 +8,7 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
 const routes: Routes = [
   { path: 'lancamentos', component: LancamentosPesquisaComponent },
   { path: 'lancamentos/novo', component: LancamentoCadastroComponent },
-  { path: 'lancamentos/:id', component: LancamentoCadastroComponent },
+  { path: 'lancamentos/:id', component: LancamentoCadastroComponent }
 ];
 
 @NgModule({
