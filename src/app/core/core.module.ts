@@ -16,6 +16,7 @@ import { ErrorHandlerService } from './error-handler.service'
 import { RouterModule } from '@angular/router';
 import { CategoriaService } from '../categorias/categoria.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { Title } from '@angular/platform-browser';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -41,6 +42,7 @@ registerLocaleData(localePt);
     MessageService,
     ConfirmationService,
     ErrorHandlerService,
+    Title,
     { provide: LOCALE_ID, useValue: 'pt-BR'}  
   ]
 })
