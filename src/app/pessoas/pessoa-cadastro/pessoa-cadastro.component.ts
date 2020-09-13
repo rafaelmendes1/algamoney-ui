@@ -5,6 +5,7 @@ import { PessoaService } from '../pessoa.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { MessageService } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -19,10 +20,13 @@ export class PessoaCadastroComponent implements OnInit {
     private erroHandler: ErrorHandlerService,
     private messageService: MessageService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private title: Title) { }
 
   ngOnInit(): void {
     const idPessoa = this.route.snapshot.params['id'];
+
+    this.title.setTitle('Nova Pessoa');
 
     if(idPessoa) {
       this.carregarPessoa(idPessoa);
@@ -39,6 +43,7 @@ export class PessoaCadastroComponent implements OnInit {
     .then(pessoa => {
       this.pessoa = pessoa;
 
+      this.atualizarTituloEdicao();
     }).catch(erro => this.erroHandler.handle(erro));
   }
 
@@ -65,6 +70,7 @@ export class PessoaCadastroComponent implements OnInit {
       this.pessoa = pessoaAlterada;
 
       this.messageService.add({key: 'aviso', severity: 'success', summary: 'Pessoa alterada com sucesso!'});
+      this.atualizarTituloEdicao();
     }).catch(erro => this.erroHandler.handle(erro));
   }
 
@@ -76,6 +82,10 @@ export class PessoaCadastroComponent implements OnInit {
     }.bind(this), 1);
 
     this.router.navigate(['/pessoas/novo']);
+  }
+
+  atualizarTituloEdicao() {
+    this.title.setTitle(`Edição da pessoa: ${this.pessoa.nome}`);
   }
 
 }
