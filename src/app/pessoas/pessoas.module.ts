@@ -17,6 +17,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component'
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component'
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,8 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
     CommonModule,
     SharedModule,
     FormsModule,
+
+    RouterModule,
 
     InputTextModule,
     ButtonModule,

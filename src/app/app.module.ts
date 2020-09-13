@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { Routes, RouterModule } from '@angular/router';
 
 import { PessoasModule } from './pessoas/pessoas.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,9 +27,7 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule
     
   ],
-  providers: [
-    
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -48,7 +48,7 @@
 
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Estado</label>
-                <input pInputText type="text" [(ngModel)]="pessoa.endereco.estado" ngModel name="estado" #estado="ngModel" required>
+                <input pInputText type="text" maxlength="2" [(ngModel)]="pessoa.endereco.estado" ngModel name="estado" #estado="ngModel" required>
                 <app-message [control]="estado" error="required" text="Informe o estado"></app-message>
             </div>
             
