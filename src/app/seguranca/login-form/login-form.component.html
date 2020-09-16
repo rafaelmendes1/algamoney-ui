@@ -8,11 +8,11 @@
             </div>
 
             <div class="p-field p-col-12 p-fluid">
-                <input type="text" name="senha" placeholder="Senha" pInputText ngModel #senha required>
+                <input type="password" pPassword feedback="off" name="senha" placeholder="Senha" ngModel #senha required>
             </div>
 
             <div class="p-col-12 p-fluid">
-                <button pButton type="button" label="Login" class="p-button-info" [disabled]="formLogin.invalid"></button>
+                <button pButton type="button" label="Login" class="p-button-info" (click)="login(usuario.value, senha.value)" [disabled]="formLogin.invalid"></button>
             </div>
         </div>
     </form>    

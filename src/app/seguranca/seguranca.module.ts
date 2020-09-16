@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { PasswordModule } from 'primeng/password';
 
 import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -19,6 +20,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 
     InputTextModule,
     ButtonModule,
+    PasswordModule,
     
     SegurancaRoutingModule
 

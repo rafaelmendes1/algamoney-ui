@@ -1,6 +1,8 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import localePt from '@angular/common/locales/pt';
 
 
@@ -13,10 +15,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PessoaService } from '../pessoas/pessoa.service'
 import { LancamentoService } from '../lancamentos/lancamento.service'
 import { ErrorHandlerService } from './error-handler.service'
-import { RouterModule } from '@angular/router';
 import { CategoriaService } from '../categorias/categoria.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
-import { Title } from '@angular/platform-browser';
+import { AuthService } from './../seguranca/auth.service';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -42,6 +43,7 @@ registerLocaleData(localePt);
     MessageService,
     ConfirmationService,
     ErrorHandlerService,
+    AuthService,
     Title,
     { provide: LOCALE_ID, useValue: 'pt-BR'}  
   ]
