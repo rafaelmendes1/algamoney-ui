@@ -12,7 +12,7 @@
             </div>
 
             <div class="p-col-12 p-fluid">
-                <button pButton type="button" label="Login" class="p-button-info" (click)="login(usuario.value, senha.value)" [disabled]="formLogin.invalid"></button>
+                <button pButton type="button" label="Login" class="p-button-info" (click)="login(usuario.value, senha.value); senha.value= '';" [disabled]="formLogin.invalid"></button>
             </div>
         </div>
     </form>    

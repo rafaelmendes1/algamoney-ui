@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "algamoney-ui"
+    }
+  },
+  "defaultProject": "algamoney-ui",
+  "cli": {
+    "analytics": false
+  }
 }
