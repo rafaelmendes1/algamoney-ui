@@ -18,7 +18,7 @@ export class ErrorHandlerService {
     }else {
       msg = 'Erro ao processar serviço remoto. Tente novamente.';
     }
-    console.log(errorResponse)
+    
     this.messageService.add({key: 'aviso', severity: 'error', summary: msg});
   }
 }
