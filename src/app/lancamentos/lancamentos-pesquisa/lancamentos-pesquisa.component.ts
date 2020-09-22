@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LancamentoService, LancamentoFiltro } from '../lancamento.service';
-import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/api'
-import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Title } from '@angular/platform-browser';
+
+import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/api'
+
+import { LancamentoService, LancamentoFiltro } from '../lancamento.service';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { AuthService } from 'src/app/seguranca/auth.service';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -18,6 +21,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   @ViewChild('tabela') grid;
 
   constructor(private lancamentoService: LancamentoService,
+    public auth: AuthService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
