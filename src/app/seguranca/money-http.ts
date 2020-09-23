@@ -6,7 +6,7 @@ import { Observable } from "rxjs/Observable";
 
 import { AuthService } from "./auth.service";
 
-export class NotAuthenticatedError{}
+export class NotAuthenticatedError {}
 
 export class MoneyHttp extends AuthHttp {
 
