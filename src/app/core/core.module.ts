@@ -18,13 +18,15 @@ import { LancamentoService } from '../lancamentos/lancamento.service'
 import { ErrorHandlerService } from './error-handler.service'
 import { CategoriaService } from '../categorias/categoria.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { NaoAutorizadoComponent } from './nao-autorizado.component';
 import { AuthService } from './../seguranca/auth.service';
 
 registerLocaleData(localePt);
 @NgModule({
   declarations: [
     NavbarComponent,
-    PaginaNaoEncontradaComponent
+    PaginaNaoEncontradaComponent,
+    NaoAutorizadoComponent
   ],
   imports: [
     CommonModule, 

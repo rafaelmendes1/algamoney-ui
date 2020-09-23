@@ -3,12 +3,27 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
-
+import { AuthGuard } from '../seguranca/auth.guard';
 
 const routes: Routes = [
-  { path: 'pessoas', component: PessoasPesquisaComponent },
-  { path: 'pessoas/nova', component: PessoaCadastroComponent },
-  { path: 'pessoas/:id', component: PessoaCadastroComponent }
+  { 
+    path: 'pessoas',
+    component: PessoasPesquisaComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_PESQUISAR_PESSOAS'] }
+  },
+  { 
+    path: 'pessoas/nova',
+    component: PessoaCadastroComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_CADASTRAR_PESSOAS'] }
+  },
+  { 
+    path: 'pessoas/:id',
+    component: PessoaCadastroComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_CADASTRAR_PESSOAS'] }
+  }
 ];
 
 @NgModule({
