@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 import { AuthHttp } from 'angular2-jwt';
+import { environment } from 'src/environments/environment';
 import { Pessoa } from '../core/model';
 
 export class PessoasFiltro {
@@ -14,9 +15,11 @@ export class PessoasFiltro {
 })
 export class PessoaService {
 
-  constructor(private http: AuthHttp) { }
+  constructor(private http: AuthHttp) { 
+    this.pessoasUrl = `${environment.apiUrl}/pessoas`;
+  }
   
-  pessoasUrl = 'http://localhost:8080/pessoas';
+  pessoasUrl: string;
 
   pesquisar(filtro: PessoasFiltro): Promise<any> {
     const params = new URLSearchParams;

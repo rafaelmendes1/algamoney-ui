@@ -16,13 +16,13 @@ const routes: Routes = [
     path: 'lancamentos/novo',
     component: LancamentoCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRO_LANCAMENTO'] }
+    data: { roles: ['ROLE_CADASTRAR_LANCAMENTO'] }
   },
   { 
     path: 'lancamentos/:id',
     component: LancamentoCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRO_LANCAMENTO'] }
+    data: { roles: ['ROLE_CADASTRAR_LANCAMENTO'] }
   } 
 ];
 
